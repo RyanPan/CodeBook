@@ -5,16 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewService", "MyNewService\MyNewService.csproj", "{22D8901C-159B-428F-B080-EE8F6E96F0CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomThreadPool", "CustomThreadPool\CustomThreadPool.csproj", "{B5F38254-BC76-4FF9-9D76-ABF5E41EE0A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAPExample", "CAPExample\CAPExample.csproj", "{B5543C4D-2679-41B5-A030-D266489AB965}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TLSDataSlot", "TLSDataSlot\TLSDataSlot.csproj", "{E1182219-186B-4CF6-9EC7-ACB85CB14BB5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadStaticAttributeTest", "ThreadStaticAttributeTest\ThreadStaticAttributeTest.csproj", "{217C1A3E-F427-4750-921B-33C37C463ADE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDomainData", "AppDomainData\AppDomainData.csproj", "{AD0D2919-0711-463A-BF4D-BC93511E19D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,26 +15,6 @@ Global
 		{22D8901C-159B-428F-B080-EE8F6E96F0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22D8901C-159B-428F-B080-EE8F6E96F0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22D8901C-159B-428F-B080-EE8F6E96F0CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5F38254-BC76-4FF9-9D76-ABF5E41EE0A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5F38254-BC76-4FF9-9D76-ABF5E41EE0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5F38254-BC76-4FF9-9D76-ABF5E41EE0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5F38254-BC76-4FF9-9D76-ABF5E41EE0A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5543C4D-2679-41B5-A030-D266489AB965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5543C4D-2679-41B5-A030-D266489AB965}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5543C4D-2679-41B5-A030-D266489AB965}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5543C4D-2679-41B5-A030-D266489AB965}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1182219-186B-4CF6-9EC7-ACB85CB14BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1182219-186B-4CF6-9EC7-ACB85CB14BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1182219-186B-4CF6-9EC7-ACB85CB14BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1182219-186B-4CF6-9EC7-ACB85CB14BB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{217C1A3E-F427-4750-921B-33C37C463ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{217C1A3E-F427-4750-921B-33C37C463ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{217C1A3E-F427-4750-921B-33C37C463ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{217C1A3E-F427-4750-921B-33C37C463ADE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD0D2919-0711-463A-BF4D-BC93511E19D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD0D2919-0711-463A-BF4D-BC93511E19D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD0D2919-0711-463A-BF4D-BC93511E19D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD0D2919-0711-463A-BF4D-BC93511E19D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
