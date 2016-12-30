@@ -139,6 +139,9 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Membership\MyMembershipProvider.cs" />
+    <Compile Include="Membership\MyMembershipUser.cs" />
+    <Compile Include="Membership\MyRoleProvider.cs" />
     <Compile Include="PasswordRecovery.aspx.cs">
       <DependentUpon>PasswordRecovery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

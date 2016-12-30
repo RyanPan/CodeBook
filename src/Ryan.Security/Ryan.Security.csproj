@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>RyanSecurity.snk</AssemblyOriginatorKeyFile>
@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="MyMembershipProvider.cs" />
     <Compile Include="MyMembershipUser.cs" />
+    <Compile Include="MyRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

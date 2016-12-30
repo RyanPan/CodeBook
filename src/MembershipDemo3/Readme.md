@@ -8,3 +8,7 @@ IIS 配置
 自定义的 MembershipProvider 默认无法通过“IIS Manager -> <站点主页> -> .NET 用户”进行管理。
 设置 IIS 配置文件“C:\Windows\System32\inetsrv\config\Administration.confg”节点“configuration->system.webServer->management->trustedProviders”属性“allowUntrustedProviders="true"”。
 或者，可以将 Provider 打包进强签名 dll，添加到 GAC，然后在 IIS Manager 配置中添加到 trustedProviders 集合。
+
+错误调试
+除了将自定义的 Provider 放到单独的 dll 中，在站点中也有一份拷贝
+自定义的 RoleProvider 添加到配置文件始终是“无法加载程序集的错误”，去掉类库签名后就好了

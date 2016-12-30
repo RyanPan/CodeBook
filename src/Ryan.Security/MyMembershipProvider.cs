@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Reference: Implementing a Membership Provider
+ * https://msdn.microsoft.com/en-us/library/f1kyba5e.aspx
+ * https://msdn.microsoft.com/en-us/library/6tc47t75.aspx
+ * 
+ */
+
+using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Configuration.Provider;
@@ -12,6 +19,35 @@ using System.Web.Security;
 
 namespace Ryan.Security
 {
+    /*
+
+    This provider works with the following schema for the table of user data.
+
+    CREATE TABLE Users
+    (
+      PKID Guid NOT NULL PRIMARY KEY,
+      Username Text (255) NOT NULL,
+      ApplicationName Text (255) NOT NULL,
+      Email Text (128) NOT NULL,
+      Comment Text (255),
+      Password Text (128) NOT NULL,
+      PasswordQuestion Text (255),
+      PasswordAnswer Text (255),
+      IsApproved YesNo, 
+      LastActivityDate DateTime,
+      LastLoginDate DateTime,
+      LastPasswordChangedDate DateTime,
+      CreationDate DateTime, 
+      IsOnLine YesNo,
+      IsLockedOut YesNo,
+      LastLockedOutDate DateTime,
+      FailedPasswordAttemptCount Integer,
+      FailedPasswordAttemptWindowStart DateTime,
+      FailedPasswordAnswerAttemptCount Integer,
+      FailedPasswordAnswerAttemptWindowStart DateTime
+    )
+
+    */
     public class MyMembershipProvider : MembershipProvider
     {
         // 
