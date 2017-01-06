@@ -23,7 +23,7 @@ namespace CopyFolderWithFilter
 
             //CopyFile(sourceFolder, targetFolder);
 
-            MoveFileAndFolderUnderJpgFolderToParent(targetFolder);
+            MoveFileAndFolderUnderJpgFolderToParent(Path.Combine(targetFolder, "jpg"));
 
             Console.ReadKey(true);
         }
@@ -91,7 +91,30 @@ namespace CopyFolderWithFilter
             if (currentFolderName == "jpg")
             {
                 string parent = Directory.GetParent(rootFolder).FullName;
-                MoveFolderContent(rootFolder, parent);
+
+                foreach (var f in Directory.GetFiles(rootFolder))
+                {
+                    string newFileName = Path.Combine(parent, Path.GetFileName(f));
+                    if (File.Exists(newFileName))
+                    {
+                        newFileName = Path.Combine(Path.GetDirectoryName(newFileName), string.Format("{0}-jpg{1}", Path.GetFileNameWithoutExtension(newFileName), Path.GetExtension(newFileName)));
+                    }
+                    File.Move(f, newFileName);
+                }
+
+                foreach (var d in Directory.GetDirectories(rootFolder))
+                {
+                    string currFolderName = d.Replace(Directory.GetParent(d).FullName, "").TrimStart('\\').ToLower();
+                    string newFolder = Path.Combine(parent, currFolderName);
+                    if (Directory.Exists(newFolder))
+                    {
+                        newFolder = Path.Combine(parent, string.Format("{0}-jpg", currFolderName));
+                    }
+                    Directory.CreateDirectory(newFolder);
+                    MoveFolder(d, newFolder);
+                    Directory.Delete(d);
+                }
+
                 if (Directory.GetFiles(rootFolder).Count() == 0 && Directory.GetDirectories(rootFolder).Count() == 0)
                 {
                     Directory.Delete(rootFolder);
@@ -99,27 +122,27 @@ namespace CopyFolderWithFilter
             }
         }
 
-        private static void MoveFolderContent(string rootFolder, string parent)
+        /// <summary>
+        /// 将 SourceFolder 移动到 targetFolder
+        /// </summary>
+        /// <param name="sourceFolder"></param>
+        /// <param name="targetFolder"></param>
+        private static void MoveFolder(string sourceFolder, string targetFolder)
         {
-            foreach (var d in Directory.GetDirectories(rootFolder))
+            // 递归移动子目录
+            foreach (var d in Directory.GetDirectories(sourceFolder))
             {
-                string currentFolderName = rootFolder.Replace(Directory.GetParent(rootFolder).FullName, "").TrimStart('\\').ToLower();
-                string targetFolder = Path.Combine(parent, currentFolderName);
-                if (Directory.GetDirectories(targetFolder).Count() > 0)
-                {
-                    targetFolder = Path.Combine(parent, string.Format("{0}-jpg", currentFolderName));
-                }
-                Directory.CreateDirectory(targetFolder);
-                MoveFolderContent(d, targetFolder);
+                string currFolderName = d.Replace(Directory.GetParent(d).FullName, "").TrimStart('\\').ToLower();
+                string newFolder = Path.Combine(targetFolder, currFolderName);
+                Directory.CreateDirectory(newFolder);   // 随根目录移动，不用判断是否存在
+                MoveFolder(d, newFolder);
+                Directory.Delete(d);
             }
 
-            foreach (var f in Directory.GetFiles(rootFolder))
+            // 移动子文件
+            foreach (var f in Directory.GetFiles(sourceFolder))
             {
-                string newFileName = Path.Combine(parent, Path.GetFileName(f));
-                if (File.Exists(newFileName))
-                {
-                    newFileName = Path.Combine(Path.GetDirectoryName(newFileName), string.Format("{0}-jpg{1}", Path.GetFileNameWithoutExtension(newFileName), Path.GetExtension(newFileName)));
-                }
+                string newFileName = Path.Combine(targetFolder, Path.GetFileName(f));
                 File.Move(f, newFileName);
             }
         }
