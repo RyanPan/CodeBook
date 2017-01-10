@@ -21,17 +21,17 @@ namespace CopyFolderWithFilter
             // 拷贝指定的目录
             // 递归遍历目录中的所有子文件夹和子文件，过滤掉指定的文件类型
 
-            Console.WriteLine();
-            Console.WriteLine("================================");
-            Console.WriteLine("Copy folder content without source file...");
-            CopyFile(sourceFolder, targetFolder);
-            Console.WriteLine("================================");
-            Console.WriteLine();
+            //Console.WriteLine();
+            //Console.WriteLine("================================");
+            //Console.WriteLine("Copy folder content without source file...");
+            //CopyFile(sourceFolder, targetFolder);
+            //Console.WriteLine("================================");
+            //Console.WriteLine();
 
             Console.WriteLine();
             Console.WriteLine("================================");
             Console.WriteLine("Remove folder with name 'jpg'...");
-            MoveFileAndFolderUnderJpgFolderToParent(Path.Combine(targetFolder, "jpg"));
+            MoveFileAndFolderUnderJpgFolderToParent(targetFolder);
             Console.WriteLine("================================");
             Console.WriteLine();
 
