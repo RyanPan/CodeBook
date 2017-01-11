@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using AspNetIdentityDemo.DAL;
 
 namespace AspNetIdentityDemo.Models
 {
@@ -21,9 +22,14 @@ namespace AspNetIdentityDemo.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("SQLExpress", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        //static ApplicationDbContext()
+        //{
+        //    Database.SetInitializer<ApplicationDbContext>(new IdentityInitializer());
+        //}
 
         public static ApplicationDbContext Create()
         {
