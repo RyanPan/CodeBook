@@ -21,12 +21,12 @@ namespace CopyFolderWithFilter
             // 拷贝指定的目录
             // 递归遍历目录中的所有子文件夹和子文件，过滤掉指定的文件类型
 
-            //Console.WriteLine();
-            //Console.WriteLine("================================");
-            //Console.WriteLine("Copy folder content without source file...");
-            //CopyFile(sourceFolder, targetFolder);
-            //Console.WriteLine("================================");
-            //Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("================================");
+            Console.WriteLine("Copy folder content without source file...");
+            CopyFile(sourceFolder, targetFolder);
+            Console.WriteLine("================================");
+            Console.WriteLine();
 
             Console.WriteLine();
             Console.WriteLine("================================");
@@ -34,6 +34,16 @@ namespace CopyFolderWithFilter
             MoveFileAndFolderUnderJpgFolderToParent(targetFolder);
             Console.WriteLine("================================");
             Console.WriteLine();
+
+            // 下面注释掉的代码与前面的代码分开执行
+            //Console.WriteLine();
+            //Console.WriteLine("================================");
+            //Console.WriteLine("Delete all files except .psd & .ai files...");
+            //int delCount = 0;
+            //DeleteJpg(sourceFolder, ref delCount);
+            //Console.WriteLine("Total files deleted: {0}", delCount);
+            //Console.WriteLine("================================");
+            //Console.WriteLine();
 
             Console.WriteLine("Completed!");
             Console.ReadKey(true);
@@ -157,6 +167,37 @@ namespace CopyFolderWithFilter
                 string newFileName = Path.Combine(targetFolder, Path.GetFileName(f));
                 File.Move(f, newFileName);
             }
+        }
+
+        private static void DeleteJpg(string targetFolder, ref int count)
+        {
+            if (!Directory.Exists(targetFolder))
+            {
+                return;
+            }
+
+            string[] arrExt = new string[] { ".psd", ".ai" };
+            foreach (var f in Directory.GetFiles(targetFolder))
+            {
+                if (arrExt.Contains(Path.GetExtension(f).ToLower()))
+                {
+                    continue;
+                }
+                File.Delete(f);
+                count++;
+            }
+
+            foreach (var d in Directory.GetDirectories(targetFolder))
+            {
+                DeleteJpg(d, ref count);
+            }
+
+            if (Directory.GetFiles(targetFolder).Count() == 0 && Directory.GetDirectories(targetFolder).Count() == 0)
+            {
+                Directory.Delete(targetFolder);
+            }
+
+            //Console.WriteLine("Total deleted: {0}", count);
         }
     }
 }
