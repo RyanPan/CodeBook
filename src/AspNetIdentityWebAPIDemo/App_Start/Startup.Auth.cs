@@ -40,7 +40,7 @@ namespace AspNetIdentityWebAPIDemo
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 //在生产模式下设 AllowInsecureHttp = false
-                AllowInsecureHttp = false
+                //AllowInsecureHttp = false
             };
 
             // 使应用程序可以使用不记名令牌来验证用户身份

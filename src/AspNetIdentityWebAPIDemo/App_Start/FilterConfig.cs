@@ -10,7 +10,7 @@ namespace AspNetIdentityWebAPIDemo
             filters.Add(new HandleErrorAttribute());
 
             // New code
-            //filters.Add(new RequireHttpsAttribute());
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }

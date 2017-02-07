@@ -10,6 +10,7 @@ namespace AspNetIdentityWebAPIDemo.Controllers
     [Authorize]
     public class ValuesController : ApiController
     {
+        [AllowAnonymous]
         // GET api/values
         public IEnumerable<string> Get()
         {

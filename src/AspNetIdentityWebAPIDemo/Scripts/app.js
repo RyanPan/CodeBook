@@ -5,6 +5,7 @@
 
     self.result = ko.observable();
     self.user = ko.observable();
+    self.id = ko.observable();
 
     self.registerEmail = ko.observable();
     self.registerPassword = ko.observable();
@@ -49,7 +50,7 @@
 
         $.ajax({
             type: 'GET',
-            url: '/api/values',
+            url: '/api/values/' + (self.id() == undefined ? '' : self.id()),
             headers: headers
         }).done(function (data) {
             self.result(data);

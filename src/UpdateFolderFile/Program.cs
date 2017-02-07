@@ -12,6 +12,11 @@ namespace UpdateFolderFile
     {
         static void Main(string[] args)
         {
+            string cet = "e0-6d-eb-25-6c-5b-38-4f-71-b9-a2-d1-eb-26-c5-1d-e2-2e-e5-57";
+            HexToData("e0-6d-eb-25-6c-5b-38-4f-71-b9-a2-d1-eb-26-c5-1d-e2-2e-e5-57");
+            HexToData(cet);
+            return;
+
             //TestBar();
             //return;
 
@@ -77,6 +82,35 @@ namespace UpdateFolderFile
 
                 Console.ReadKey(true);
             }
+        }
+
+        private static void ShowLength(string s)
+        {
+            Console.WriteLine(s.Length);
+        }
+
+        private static byte[] HexToData(string hexValue)
+        {
+            if (hexValue == null)
+            {
+                return null;
+            }
+
+            hexValue = hexValue.Replace(" ", string.Empty);
+            hexValue = hexValue.Replace("-", string.Empty);
+            if (hexValue.Length % 2 == 1)
+            {
+                // Up to you whether to pad the first or last byte
+                hexValue = '0' + hexValue;
+            }
+
+            byte[] data = new byte[hexValue.Length / 2];
+            for (int i = 0; i < data.Length; i++)
+            {
+                data[i] = Convert.ToByte(hexValue.Substring(i * 2, 2), 16);
+            }
+
+            return data;
         }
     }
 }
