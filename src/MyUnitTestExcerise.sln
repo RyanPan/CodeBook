@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUnitTestExcerise", "MyUni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUnitTestExceriseTestsUsingNUnitAndMoq", "MyUnitTestExcerise\MyUnitTestExceriseTestsUsingNUnitAndMoq\MyUnitTestExceriseTestsUsingNUnitAndMoq.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyUnitTestExceriseTestsUsingxUnit", "MyUnitTestExcerise\MyUnitTestExceriseTestsUsingxUnit\MyUnitTestExceriseTestsUsingxUnit.csproj", "{E41B53B5-6FED-4BE8-B292-48DDA0098BC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E41B53B5-6FED-4BE8-B292-48DDA0098BC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E41B53B5-6FED-4BE8-B292-48DDA0098BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E41B53B5-6FED-4BE8-B292-48DDA0098BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E41B53B5-6FED-4BE8-B292-48DDA0098BC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
