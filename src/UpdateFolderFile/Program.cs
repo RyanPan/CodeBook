@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,6 +13,21 @@ namespace UpdateFolderFile
     {
         static void Main(string[] args)
         {
+            string Htmlstring = "<p>Pargraph</p>img:<img src='http://www.baidu.com/img.png' />Some string";
+
+            Regex reg = new Regex(@"<(.[^>]*)>");
+            MatchCollection coll = reg.Matches(Htmlstring);
+
+            string[] list = GetHtmlImageUrlList(Htmlstring);
+
+            string str = Regex.Replace(Htmlstring, @"<(.[^>]*)>", "", RegexOptions.IgnoreCase);
+            Console.WriteLine(str);
+            return;
+
+            //Console.WriteLine("{0:yyyyMMddHHmmssfffffff}", DateTime.Now);
+            //Console.WriteLine(GuidTo16String());
+            //return;
+
             string cet = "e0-6d-eb-25-6c-5b-38-4f-71-b9-a2-d1-eb-26-c5-1d-e2-2e-e5-57";
             HexToData("e0-6d-eb-25-6c-5b-38-4f-71-b9-a2-d1-eb-26-c5-1d-e2-2e-e5-57");
             HexToData(cet);
@@ -67,6 +83,22 @@ namespace UpdateFolderFile
             }
         }
 
+        private static string[] GetHtmlImageUrlList(string sHtmlText)
+        {
+            // 定义正则表达式用来匹配 img 标签 
+            Regex regImg = new Regex(@"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>", RegexOptions.IgnoreCase);
+
+            // 搜索匹配的字符串 
+            MatchCollection matches = regImg.Matches(sHtmlText);
+            int i = 0;
+            string[] sUrlList = new string[matches.Count];
+
+            // 取得匹配项列表 
+            foreach (Match match in matches)
+                sUrlList[i++] = match.Groups["imgUrl"].Value;
+            return sUrlList;
+        }
+
         private static void TestBar()
         {
             Random r = new Random();
@@ -111,6 +143,14 @@ namespace UpdateFolderFile
             }
 
             return data;
+        }
+
+        private static string GuidTo16String()
+        {
+            long i = 1;
+            foreach (byte b in Guid.NewGuid().ToByteArray())
+                i *= ((int)b + 1);
+            return string.Format("{0:x}", i - DateTime.Now.Ticks);
         }
     }
 }
